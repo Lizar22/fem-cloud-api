@@ -17,9 +17,15 @@ public class QuoteController {
     }
 
     @GetMapping("/quotes")
-    public ResponseEntity<List<Quote>> getAllEvents() {
+    public ResponseEntity<List<Quote>> getAllQuotes() {
         List<Quote> quotes = quoteService.getAllQuotes();
         return new ResponseEntity<List<Quote>>(quotes, HttpStatus.OK);
+    }
+
+    @GetMapping("/quotes/{id}")
+    public ResponseEntity<Quote> getQuoteById(@PathVariable Long id) {
+        Quote quoteById = quoteService.getById(id);
+        return new ResponseEntity<Quote>(quoteById, HttpStatus.OK);
     }
 
     @PostMapping("/quotes")
