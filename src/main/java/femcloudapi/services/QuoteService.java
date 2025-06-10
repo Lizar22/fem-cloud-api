@@ -25,7 +25,8 @@ public class QuoteService {
     }
 
     public void deleteQuote(Long id) {
-        quoteRepository.deleteById(id);
+        Quote quoteToDelete = getById(id);
+        quoteRepository.deleteById(quoteToDelete.getId());
     }
 
     public Quote getById(Long id) {
