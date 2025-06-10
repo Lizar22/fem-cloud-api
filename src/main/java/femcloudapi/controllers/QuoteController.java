@@ -4,10 +4,7 @@ import femcloudapi.models.Quote;
 import femcloudapi.services.QuoteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,11 @@ public class QuoteController {
     public ResponseEntity<Quote> addQuote(@RequestBody Quote newQuote) {
         Quote createdQuote = quoteService.addQuote(newQuote);
         return new ResponseEntity<Quote>(createdQuote, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/quotes/{id}")
+    public ResponseEntity<Void> deleteQuote(@PathVariable Long id) {
+        quoteService.deleteQuote(id);
+        return ResponseEntity.noContent().build();
     }
 }
