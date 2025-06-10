@@ -1,10 +1,12 @@
 package femcloudapi.services;
 
+import femcloudapi.exeptions.QuoteNotFoundExeption;
 import femcloudapi.models.Quote;
 import femcloudapi.repositories.QuoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuoteService {
@@ -25,9 +27,16 @@ public class QuoteService {
     public void deleteQuote(Long id) {
         quoteRepository.deleteById(id);
     }
+
+    public Quote getById(Long id) {
+        return quoteRepository.findById(id).orElseThrow(() -> new QuoteNotFoundExeption("No se ha encontrado ninguna cita con el id " + id));
+    }
+
+    public void updateQuote(Long id) {
+        Quote updatedQuote = getById(id);
+        updatedQuote.setText(updatedQuote.getText());
+        updatedQuote.setAuthor(updatedQuote.getAuthor());
+        updatedQuote.setYear(updatedQuote.getYear());
+        quoteRepository.save(updatedQuote);
+    }
 }
-
-
-
-
-//aquí tendremos que usar el optional por si estamos buscando por ID y no encuentra, que ponga un mensaje, y si encuentra, que devuelva lo que buscamos
