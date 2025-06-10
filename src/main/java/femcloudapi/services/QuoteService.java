@@ -32,11 +32,11 @@ public class QuoteService {
         return quoteRepository.findById(id).orElseThrow(() -> new QuoteNotFoundExeption("No se ha encontrado ninguna cita con el id " + id));
     }
 
-    public void updateQuote(Long id) {
-        Quote updatedQuote = getById(id);
-        updatedQuote.setText(updatedQuote.getText());
-        updatedQuote.setAuthor(updatedQuote.getAuthor());
-        updatedQuote.setYear(updatedQuote.getYear());
-        quoteRepository.save(updatedQuote);
+    public void updateQuote(Long id, Quote updatedQuote) {
+        Quote oldQuote = getById(id);
+        oldQuote.setText(updatedQuote.getText());
+        oldQuote.setAuthor(updatedQuote.getAuthor());
+        oldQuote.setYear(updatedQuote.getYear());
+        quoteRepository.save(oldQuote);
     }
 }
