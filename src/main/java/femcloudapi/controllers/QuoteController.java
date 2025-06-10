@@ -33,4 +33,9 @@ public class QuoteController {
         quoteService.deleteQuote(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/quotes/{id}")
+    public void updateQuote(@PathVariable Long id, @RequestBody Quote quote) {
+        quoteService.updateQuote(id, quote);
+    }
 }
