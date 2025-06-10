@@ -22,6 +22,12 @@ public class QuoteService {
         return quoteRepository.save(newQuote);
     }
 
-
-    //aquí tendremos que usar el optional por si estamos buscando por ID y no encuentra, que ponga un mensaje, y si encuentra, que devuelva lo que buscamos
+    public void deleteQuote(Long id) {
+        quoteRepository.deleteById(id);
+    }
 }
+
+
+
+
+//aquí tendremos que usar el optional por si estamos buscando por ID y no encuentra, que ponga un mensaje, y si encuentra, que devuelva lo que buscamos
