@@ -2,6 +2,7 @@
 
 **FemCloud API** is a RESTful API built with **Spring Boot** that lets you manage and explore quotes by **feminist and pioneering women** throughout history. It's designed as a learning project and a tribute to the words and ideas that inspired generations of women and men.
 
+<br>
 
 
 ## 🚀 Project Purpose
@@ -14,6 +15,7 @@ This project helps you:
 - Practice API testing with **Postman**  
 - Promote historical and inspirational quotes from impactful women
 
+<br>
 
 
 ## ✨ Thematic Focus
@@ -42,6 +44,7 @@ Examples of influential women:
 
 Quotes should reflect feminist thought, social change, human rights, or historical relevance.
 
+<br>
 
 
 ## 🛠️ Technologies & Tools
@@ -54,6 +57,7 @@ Quotes should reflect feminist thought, social change, human rights, or historic
 - ✅ Git & GitHub  
 - ✅ Trello (for task tracking)
 
+<br>
 
 
 ## 🗂️ Project Structure
@@ -72,6 +76,7 @@ com.femcloud\_api
 
 ````
 
+<br>
 
 
 ## 📋 Functional Requirements
@@ -82,6 +87,7 @@ com.femcloud\_api
 - [x] Update an existing quote  
 - [x] Delete a quote
 
+<br>
 
 
 ## 🧾 Quote Entity Structure
@@ -94,6 +100,7 @@ public class Quote {
     private String year;
 }
 ````
+<br>
 
 ## 🔌 API Endpoints
 
@@ -105,6 +112,7 @@ public class Quote {
 | PUT    | `/quotes/{id}` | Update an existing quote   |
 | DELETE | `/quotes/{id}` | Delete a quote             |
 
+<br>
 
 
 ## 📦 Example JSON for Creating/Updating a Quote
@@ -117,6 +125,7 @@ public class Quote {
 }
 ```
 
+<br>
 
 
 ## ⚠️ Error Handling
@@ -134,6 +143,7 @@ When a quote is not found by ID, the API responds with a structured JSON error a
 
 This is handled via a custom exception `QuoteNotFoundException`.
 
+<br>
 
 
 ## 🧪 Testing with Postman
@@ -143,7 +153,7 @@ This is handled via a custom exception `QuoteNotFoundException`.
 3. Ensure your MySQL database is running and configured
 4. Update `application.properties` or `application.yml` with correct DB settings
 
-
+<br>
 
 
 ## ✅ Non-Functional Requirements
@@ -154,7 +164,7 @@ This is handled via a custom exception `QuoteNotFoundException`.
 * Error handling with custom messages
 * Manual API testing via Postman
 
-
+<br>
 
 
 ## 💡 Possible Future Improvements
@@ -164,7 +174,7 @@ This is handled via a custom exception `QuoteNotFoundException`.
 * Swagger/OpenAPI documentation
 * Spring Security authentication
 
-
+<br>
 
 
 ## 🧠 What I Learned
@@ -175,7 +185,7 @@ This is handled via a custom exception `QuoteNotFoundException`.
 * Error handling using custom exceptions
 * Testing endpoints with Postman
 
-
+<br>
 
 
 ## 📁 Suggested Directory Structure
@@ -194,7 +204,7 @@ src/
 └── test/
 ```
 
-
+<br>
 
 
 ## 🙌 Created with ❤️ by Lizar22
