@@ -4,7 +4,9 @@
 quotes by **feminist and pioneering women** throughout history. It's designed as a learning
 project and a tribute to the words and ideas that inspired generations of women and men.
 
----
+
+
+
 
 ## 🚀 Project Purpose
 
@@ -16,7 +18,7 @@ This project helps you:
 - Practice API testing with **Postman**
 - Promote historical and inspirational quotes from impactful women
 
----
+
 
 ## ✨ Thematic Focus
 
@@ -45,7 +47,7 @@ Examples of influential women:
 
 Quotes should reflect feminist thought, social change, human rights, or historical relevance.
 
----
+
 
 ## 🛠️ Technologies & Tools
 
@@ -57,7 +59,7 @@ Quotes should reflect feminist thought, social change, human rights, or historic
 - ✅ Git & GitHub
 - ✅ Trello (for task tracking)
 
----
+
 
 ## 🗂️ Project Structure
 
@@ -75,7 +77,7 @@ com.femcloud_api
 
 ````
 
----
+
 
 ## 📋 Functional Requirements
 
@@ -85,7 +87,7 @@ com.femcloud_api
 - [x] Update an existing quote
 - [x] Delete a quote
 
----
+
 
 ## 🧾 Quote Entity Structure
 
@@ -98,7 +100,7 @@ public class Quote {
 }
 ````
 
----
+
 
 ## 🔌 API Endpoints
 
@@ -110,7 +112,7 @@ public class Quote {
 | PUT    | `/quotes/{id}` | Update an existing quote   |
 | DELETE | `/quotes/{id}` | Delete a quote             |
 
----
+
 
 ## 📦 Example JSON for Creating/Updating a Quote
 
@@ -122,7 +124,7 @@ public class Quote {
 }
 ```
 
----
+
 
 ## ⚠️ Error Handling
 
@@ -139,7 +141,7 @@ When a quote is not found by ID, the API responds with a structured JSON error a
 
 This is handled via a custom exception `QuoteNotFoundException`
 
----
+
 
 ## 🧪 Testing with Postman
 
@@ -148,7 +150,7 @@ This is handled via a custom exception `QuoteNotFoundException`
 3. Ensure your MySQL database is running and configured
 4. Update `application.properties` or `application.yml` with correct DB settings
 
----
+
 
 ## ✅ Non-Functional Requirements
 
@@ -158,7 +160,7 @@ This is handled via a custom exception `QuoteNotFoundException`
 * Error handling with custom messages
 * Manual API testing via Postman
 
----
+
 
 ## 💡 Possible Future Improvements
 
@@ -167,7 +169,7 @@ This is handled via a custom exception `QuoteNotFoundException`
 * Swagger/OpenAPI documentation
 * Spring Security authentication
 
----
+
 
 ## 🧠 What I Learned
 
@@ -177,7 +179,7 @@ This is handled via a custom exception `QuoteNotFoundException`
 * Error handling using custom exceptions
 * Testing endpoints with Postman
 
----
+
 
 ## 📁 Suggested Directory Structure
 
@@ -195,7 +197,7 @@ src/
 └── test/
 ```
 
----
+
 
 ## 🙌 Created with ❤️ by Lizar22
 
