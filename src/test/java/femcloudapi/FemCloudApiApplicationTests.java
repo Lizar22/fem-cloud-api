@@ -9,5 +9,4 @@ class FemCloudApiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

@@ -19,17 +19,12 @@ public class QuoteService {
         return quoteRepository.findAll();
     }
 
-    public Quote addQuote(Quote newQuote) {
-        return quoteRepository.save(newQuote);
-    }
-
-    public void deleteQuote(Long id) {
-        Quote quoteToDelete = getById(id);
-        quoteRepository.deleteById(quoteToDelete.getId());
-    }
-
     public Quote getById(Long id) {
         return quoteRepository.findById(id).orElseThrow(() -> new QuoteNotFoundException("No se ha encontrado ninguna cita con el id " + id));
+    }
+
+    public Quote addQuote(Quote newQuote) {
+        return quoteRepository.save(newQuote);
     }
 
     public void updateQuote(Long id, Quote updatedQuote) {
@@ -38,5 +33,10 @@ public class QuoteService {
         oldQuote.setAuthor(updatedQuote.getAuthor());
         oldQuote.setYear(updatedQuote.getYear());
         quoteRepository.save(oldQuote);
+    }
+
+    public void deleteQuote(Long id) {
+        Quote quoteToDelete = getById(id);
+        quoteRepository.deleteById(quoteToDelete.getId());
     }
 }

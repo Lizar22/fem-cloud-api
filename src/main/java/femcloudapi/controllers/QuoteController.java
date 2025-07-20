@@ -34,14 +34,14 @@ public class QuoteController {
         return new ResponseEntity<Quote>(createdQuote, HttpStatus.CREATED);
     }
 
+    @PutMapping("/quotes/{id}")
+    public void updateQuote(@PathVariable Long id, @RequestBody Quote quote) {
+        quoteService.updateQuote(id, quote);
+    }
+
     @DeleteMapping("/quotes/{id}")
     public ResponseEntity<Void> deleteQuote(@PathVariable Long id) {
         quoteService.deleteQuote(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping("/quotes/{id}")
-    public void updateQuote(@PathVariable Long id, @RequestBody Quote quote) {
-        quoteService.updateQuote(id, quote);
     }
 }
