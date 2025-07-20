@@ -24,7 +24,7 @@ public class QuoteController {
 
     @GetMapping("/quotes/{id}")
     public ResponseEntity<Quote> getQuoteById(@PathVariable Long id) {
-        Quote quoteById = quoteService.getById(id);
+        Quote quoteById = quoteService.getQuoteById(id);
         return new ResponseEntity<Quote>(quoteById, HttpStatus.OK);
     }
 

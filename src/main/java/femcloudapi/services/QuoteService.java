@@ -1,42 +1,52 @@
 package femcloudapi.services;
 
+import femcloudapi.dtos.QuoteMapper;
+import femcloudapi.dtos.QuoteRequest;
+import femcloudapi.dtos.QuoteResponse;
 import femcloudapi.exeptions.QuoteNotFoundException;
 import femcloudapi.models.Quote;
 import femcloudapi.repositories.QuoteRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class QuoteService {
-    private final QuoteRepository quoteRepository;
+        private final QuoteRepository QUOTE_REPOSITORY;
 
-    public QuoteService(QuoteRepository quoteRepository) {
-        this.quoteRepository = quoteRepository;
+    public QuoteService(QuoteRepository QUOTE_REPOSITORY) {
+        this.QUOTE_REPOSITORY = QUOTE_REPOSITORY;
     }
 
-    public List<Quote> getAllQuotes() {
-        return quoteRepository.findAll();
+    public List<QuoteResponse> getAllQuotes() {
+        List<Quote> quotes = QUOTE_REPOSITORY.findAll();
+        return quotes.stream().map(quote -> QuoteMapper.entityToDto(quote)).toList();
     }
 
-    public Quote getById(Long id) {
-        return quoteRepository.findById(id).orElseThrow(() -> new QuoteNotFoundException("No se ha encontrado ninguna cita con el id " + id));
+    public QuoteResponse getQuoteById(Long id) {
+        Quote quote =  QUOTE_REPOSITORY.findById(id).orElseThrow(() -> new QuoteNotFoundException("Quote not foud with id " + id));
+        return QuoteMapper.entityToDto(quote);
     }
 
-    public Quote addQuote(Quote newQuote) {
-        return quoteRepository.save(newQuote);
+    public QuoteResponse addQuote(QuoteRequest quoteRequest) {
+        Quote newQuote = QuoteMapper.dtoToEntity(quoteRequest);
+        Quote savedQuote = QUOTE_REPOSITORY.save(newQuote);
+        return QuoteMapper.entityToDto(savedQuote);
     }
 
-    public void updateQuote(Long id, Quote updatedQuote) {
-        Quote oldQuote = getById(id);
-        oldQuote.setText(updatedQuote.getText());
-        oldQuote.setAuthor(updatedQuote.getAuthor());
-        oldQuote.setYear(updatedQuote.getYear());
-        quoteRepository.save(oldQuote);
+    public QuoteResponse updateQuote(Long id, QuoteRequest quoteRequest) {
+        Quote updatedQuote = QUOTE_REPOSITORY.findById(id).orElseThrow(() -> new QuoteNotFoundException("Quote not foud with id " + id));
+        updatedQuote.setText(quoteRequest.text());
+        updatedQuote.setAuthor(quoteRequest.author());
+        updatedQuote.setYear(quoteRequest.year());
+        Quote savedQuote = QUOTE_REPOSITORY.save(updatedQuote);
+        return QuoteMapper.entityToDto(savedQuote);
     }
 
     public void deleteQuote(Long id) {
-        Quote quoteToDelete = getById(id);
-        quoteRepository.deleteById(quoteToDelete.getId());
+        getQuoteById(id);
+        QUOTE_REPOSITORY.deleteById(id);
     }
 }
