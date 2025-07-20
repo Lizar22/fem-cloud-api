@@ -1,8 +1,6 @@
 package femcloudapi.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="quotes")
@@ -17,7 +15,10 @@ public class Quote {
     public Quote() {
     }
 
-    public Quote(@NotBlank(message = "Text is required") @Size(min = 1, max = 200, message = "Text must contain min 1 and max 200 characters") String text, @NotBlank(message = "Author is required") String author, @NotBlank(message = "Year is required") String year) {
+    public Quote(String text, String author, String year) {
+        this.text = text;
+        this.author = author;
+        this.year = year;
     }
 
     public String getYear() {
