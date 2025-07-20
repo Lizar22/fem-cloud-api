@@ -7,17 +7,21 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.Instant;
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private ErrorResponse buildErrorResponse(String message, int status, String errorCode, String path) {
+        return new ErrorResponse(message, status, errorCode, path);
+    }
+
+    private static final String GENERIC_ERROR_MESSAGE = "Internal server error";
+
     @ExceptionHandler(QuoteNotFoundException.class)
-    public ResponseEntity<ErrorResponse> productNotFound(QuoteNotFoundException exception, HttpServletRequest request) {
-        ErrorResponse error = new ErrorResponse(
+    public ResponseEntity<ErrorResponse> quoteNotFound(QuoteNotFoundException exception, HttpServletRequest request) {
+        ErrorResponse error = buildErrorResponse(
                 exception.getMessage(),
                 HttpStatus.NOT_FOUND.value(),
-                "PRODUCT_NOT_FOUND",
+                ErrorCode.PRODUCT_NOT_FOUND.name(),
                 request.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
@@ -30,21 +34,21 @@ public class GlobalExceptionHandler {
                 .map(error -> error.getField() + ": " + error.getDefaultMessage())
                 .orElse("Invalid input");
 
-        ErrorResponse error = new ErrorResponse(
+        ErrorResponse error = buildErrorResponse(
                 message,
                 HttpStatus.BAD_REQUEST.value(),
-                "VALIDATION_ERROR",
+                ErrorCode.VALIDATION_ERROR.name(),
                 request.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGenericError(Exception ex, HttpServletRequest request) {
-        ErrorResponse error = new ErrorResponse(
-                "Internal server error",
+    public ResponseEntity<ErrorResponse> handleGenericError(Exception exception, HttpServletRequest request) {
+        ErrorResponse error = buildErrorResponse(
+                GENERIC_ERROR_MESSAGE,
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "INTERNAL_ERROR",
+                ErrorCode.INTERNAL_ERROR.name(),
                 request.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
