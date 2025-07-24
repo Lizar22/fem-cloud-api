@@ -68,11 +68,12 @@ The project follows a clean **3-layer MVC architecture**:
 
 com.femcloud\_api
 │
-├── controller      # Handles incoming HTTP requests
-├── service         # Business logic
-├── repository      # Data access (JPA)
-├── model           # The Quote entity
-└── exception       # Custom error handling
+├── controllers
+├── dtos    
+├── exceptions          
+├── models      
+├── repositories           
+└── services       
 
 ````
 
@@ -134,21 +135,22 @@ When a quote is not found by ID, the API responds with a structured JSON error a
 
 ```json
 {
-  "timestamp": "2025-06-10T14:20:00",
-  "status": 404,
-  "error": "Not Found",
-  "path": "/quotes/2"
+    "message": "Quote not foud with id 99",
+    "status": 404,
+    "errorCode": "PRODUCT_NOT_FOUND",
+    "path": "/quotes/99",
+    "timestamp": "2025-07-20 23:49:18"
 }
 ```
 
-This is handled via a custom exception `QuoteNotFoundException`.
+This is handled via a custom exception `QuoteNotFoundException`, a GlobalExceptionHandler and an ErrorResponse class.
 
 <br>
 
 
 ## 🧪 Testing with Postman
 
-1. Run the application in IntelliJ (`main()` method)
+1. Run the application in IntelliJ
 2. Use Postman to test all API endpoints
 3. Ensure your MySQL database is running and configured
 4. Update `application.properties` or `application.yml` with correct DB settings
@@ -163,13 +165,13 @@ This is handled via a custom exception `QuoteNotFoundException`.
 * Clean and maintainable code
 * Error handling with custom messages
 * Manual API testing via Postman
+* Input validation using `@Valid`
 
 <br>
 
 
 ## 💡 Possible Future Improvements
 
-* Input validation using `@Valid`
 * Pagination and search by author
 * Swagger/OpenAPI documentation
 * Spring Security authentication
@@ -194,11 +196,12 @@ This is handled via a custom exception `QuoteNotFoundException`.
 src/
 ├── main/
 │   └── java/com/femcloudapi
-│       ├── controller
-│       ├── service
-│       ├── repository
-│       ├── model
-│       └── exception
+│        ├── controllers
+│        ├── dtos    
+│        ├── exceptions          
+│        ├── models      
+│        ├── repositories           
+│        └── services   
 ├── resources/
 │   └── application.properties
 └── test/
@@ -207,7 +210,7 @@ src/
 <br>
 
 
-## 🙌 Created with ❤️ by Lizar22
+## 🙌 Created with 💜 by Lizar22
 
 FemCloud API is more than just a CRUD project — it's a tribute to feminist voices and an essential part of my Spring Boot learning journey, combining backend development practice with the creation of powerful, respectful software.
 
