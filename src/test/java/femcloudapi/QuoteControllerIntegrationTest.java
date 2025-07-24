@@ -70,13 +70,3 @@ public class QuoteControllerIntegrationTest {
                 .andExpect(jsonPath("$[3].year").value("2000"));
     }
 }
-
-//        @Test
-//        @DisplayName("GET /quotes should return all quotes")
-//        void shouldReturnAllQuotes() throws Exception {
-//            mockMvc.perform(get("/quotes").accept(MediaType.APPLICATION_JSON))
-//                    .andExpect(status().isOk())
-//                    .andExpect(jsonPath("$.length()").value(4))
-//                    .andExpect(jsonPath("$[0].text").value("Education is the path to freedom"))
-//                    .andExpect(jsonPath("$[1].author").value("Audre Lorde"));
-//        }
