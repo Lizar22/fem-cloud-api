@@ -1,8 +1,5 @@
 package femcloudapi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import femcloudapi.repositories.QuoteRepository;
-import femcloudapi.services.QuoteService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +22,6 @@ public class QuoteControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
-
-    @Autowired
-    QuoteService quoteService;
-
-    @Autowired
-    QuoteRepository quoteRepository;
-
-    @Autowired
-    ObjectMapper objectMapper;
 
     @Test
     @DisplayName("GET /quotes should return all quotes")
