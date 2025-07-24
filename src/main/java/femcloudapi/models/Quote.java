@@ -10,6 +10,7 @@ public class Quote {
     private Long id;
     private String text;
     private String author;
+    @Column(name = "quote_year")
     private String year;
 
     public Quote() {
