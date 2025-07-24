@@ -1,9 +1,7 @@
 package femcloudapi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import femcloudapi.models.Quote;
 import femcloudapi.repositories.QuoteRepository;
-import femcloudapi.services.QuoteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,13 +27,7 @@ public class QuoteControllerIntegrationTest {
     MockMvc mockMvc;
 
     @Autowired
-    QuoteService quoteService;
-
-    @Autowired
     QuoteRepository quoteRepository;
-
-    @Autowired
-    ObjectMapper objectMapper;
 
     @BeforeEach
     void setup() {
