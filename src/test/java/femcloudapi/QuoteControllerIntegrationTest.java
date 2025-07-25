@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -60,5 +61,14 @@ public class QuoteControllerIntegrationTest {
                 .andExpect(jsonPath("$[3].text").value("Feminism is for everybody."))
                 .andExpect(jsonPath("$[3].author").value("bell hooks"))
                 .andExpect(jsonPath("$[3].year").value("2000"));
+    }
+
+    @Test
+    @DisplayName("DELETE /quotes/{id} should return 404 Not Found if quote to delete does not exist")
+    void deleteQuote_ReturnsNotFound_WhenIdDoesNotExist() throws Exception {
+        Long nonExistentId = 99L;
+
+        mockMvc.perform(delete("/quotes/" + nonExistentId))
+                .andExpect(status().isNotFound());
     }
 }
