@@ -6,8 +6,6 @@ import femcloudapi.dtos.QuoteResponse;
 import femcloudapi.exeptions.QuoteNotFoundException;
 import femcloudapi.models.Quote;
 import femcloudapi.repositories.QuoteRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
