@@ -4,6 +4,24 @@
 
 <br>
 
+## 📚 Table of Contents
+
+- [🚀 Project Purpose](#-project-purpose)
+- [✨ Thematic Focus](#-thematic-focus)
+- [🛠️ Technologies & Tools](#️-technologies--tools)
+- [🗂️ Project Structure](#️-project-structure)
+- [📋 Functional Requirements](#-functional-requirements)
+- [🔌 API Endpoints](#-api-endpoints)
+- [📦 Example JSON for Creating/Updating a Quote](#-example-json-for-creatingupdating-a-quote)
+- [⚠️ Error Handling](#️-error-handling)
+- [🧪 Testing with Postman](#-testing-with-postman)
+- [✅ Non-Functional Requirements](#-non-functional-requirements)
+- [💡 Possible Future Improvements](#-possible-future-improvements)
+- [🧠 What I Learned](#-what-i-learned)
+- [📁 Suggested Directory Structure](#-suggested-directory-structure)
+- [🧾 License](#-license)
+
+<br>
 
 ## 🚀 Project Purpose
 
@@ -51,8 +69,10 @@ Quotes should reflect feminist thought, social change, human rights, or historic
 
 - ✅ Java 21  
 - ✅ Spring Boot  
-- ✅ MySQL  
-- ✅ IntelliJ IDEA  
+- ✅ MySQL
+- ✅ Jakarta Bean Validation
+- ✅ Maven
+- ✅ IntelliJ IDEA
 - ✅ Postman  
 - ✅ Git & GitHub  
 - ✅ Trello (for task tracking)
@@ -65,15 +85,20 @@ Quotes should reflect feminist thought, social change, human rights, or historic
 The project follows a clean **3-layer MVC architecture**:
 
 ```
-
-com.femcloud\_api
-│
-├── controllers
-├── dtos    
-├── exceptions          
-├── models      
-├── repositories           
-└── services       
+src/
+├── main/
+│   └── java/com/femcloudapi
+│        ├── controllers
+│        ├── dtos    
+│        ├── exceptions          
+│        ├── models      
+│        ├── repositories           
+│        └── services   
+├── resources/
+│   └── application.properties
+│   └── data.sql
+├── test/
+│   └── application-mysql.properties    
 
 ````
 
@@ -88,19 +113,6 @@ com.femcloud\_api
 - [x] Update an existing quote  
 - [x] Delete a quote
 
-<br>
-
-
-## 🧾 Quote Entity Structure
-
-```java
-public class Quote {
-    private Long id;
-    private String text;
-    private String author;
-    private String year;
-}
-````
 <br>
 
 ## 🔌 API Endpoints
@@ -143,14 +155,14 @@ When a quote is not found by ID, the API responds with a structured JSON error a
 }
 ```
 
-This is handled via a custom exception `QuoteNotFoundException`, a GlobalExceptionHandler and an ErrorResponse class.
+This is handled via a custom exception `QuoteNotFoundException`, a `GlobalExceptionHandler` and an `ErrorResponse` class.
 
 <br>
 
 
 ## 🧪 Testing with Postman
 
-1. Run the application in IntelliJ
+1. Run the application with your IDE (e.g., IntelliJ, VS Code)
 2. Use Postman to test all API endpoints
 3. Ensure your MySQL database is running and configured
 4. Update `application.properties` or `application.yml` with correct DB settings
@@ -183,9 +195,10 @@ This is handled via a custom exception `QuoteNotFoundException`, a GlobalExcepti
 
 * Building REST APIs with Spring Boot
 * Use of `JpaRepository` for CRUD operations
-* Structuring code using MVC principles
+* Structuring code using MVC pattern
 * Error handling using custom exceptions
 * Testing endpoints with Postman
+* Integration tests via H2 and Mysql profiles
 
 <br>
 
@@ -204,11 +217,18 @@ src/
 │        └── services   
 ├── resources/
 │   └── application.properties
+│   └── data.sql
 └── test/
+│   └── application-mysql.properties
 ```
 
 <br>
 
+## 🧾 License
+
+This project is part of the FemCoders educational program.
+
+<br>
 
 ## 🙌 Created with 💜 by Lizar22
 
